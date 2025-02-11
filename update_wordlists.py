@@ -3,34 +3,34 @@ import requests
 import json
 from github import Github
 
-# Load sources from a JSON file
-def load_sources(file="sources.json"):
-    with open(file, "r") as f:
-        return json.load(f)
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")  # Set this in your environment
 
-# Fetch wordlists from GitHub
-def fetch_wordlist(url, save_path):
-    response = requests.get(url)
-    if response.status_code == 200:
-        with open(save_path, "w", encoding="utf-8") as f:
-            f.write(response.text)
-        print(f"Saved: {save_path}")
-    else:
-        print(f"Failed to fetch {url}: {response.status_code}")
-
-# Main function to update wordlists
-def update_wordlists():
-    sources = load_sources()
-    os.makedirs("data", exist_ok=True)
+def fetch_repo_files(repo_url):
+    repo_name = repo_url.replace("https://github.com/", "")
+    g = Github(GITHUB_TOKEN)
+    repo = g.get_repo(repo_name)
+    wordlist_files = []
     
-    for category, urls in sources.items():
-        category_path = os.path.join("data", category)
-        os.makedirs(category_path, exist_ok=True)
-        
-        for url in urls:
-            filename = url.split("/")[-1]
-            save_path = os.path.join(category_path, filename)
-            fetch_wordlist(url, save_path)
+    for file in repo.get_contents(""):
+        if file.path.endswith(".txt"):
+            wordlist_files.append(file.download_url)
+    
+    return wordlist_files
+
+def generate_sources_json(repo_list, output_file="sources.json"):
+    sources = {}
+    for repo in repo_list:
+        sources[repo] = fetch_repo_files(repo)
+    
+    with open(output_file, "w") as f:
+        json.dump(sources, f, indent=4)
 
 if __name__ == "__main__":
-    update_wordlists()
+    repo_list = [
+        "https://github.com/danielmiessler/SecLists",
+        "https://github.com/assetnote/wordlists",
+        "https://github.com/trickest/wordlists",
+        "https://codeload.github.com/six2dez/OneListForAll"
+    ]
+    generate_sources_json(repo_list)
+    print("Generated sources.json")
