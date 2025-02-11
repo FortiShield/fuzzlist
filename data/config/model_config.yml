@@ -1,0 +1,40 @@
+# Model Configuration Settings
+
+model:
+  name: "YourModelName"
+  type: "neural_network"  # Options: neural_network, decision_tree, random_forest, etc.
+  framework: "tensorflow"  # Options: tensorflow, pytorch, scikit-learn, etc.
+  version: "1.0.0"
+  checkpoint_dir: "models/checkpoints"
+  save_format: "h5"  # Options: h5, pb, onnx, pth
+
+# Training Parameters
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  epochs: 10
+  optimizer: "adam"  # Options: adam, sgd, rmsprop
+  loss_function: "categorical_crossentropy"
+  metrics: ["accuracy"]
+
+# Data Pipeline
+data:
+  input_shape: [224, 224, 3]  # Example for image data
+  num_classes: 10
+  augmentation: true
+  normalization: true
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+
+# Hardware Acceleration
+hardware:
+  use_gpu: true
+  use_tpu: false
+  num_workers: 4
+
+# Logging & Monitoring
+logging:
+  level: "INFO"
+  tensorboard_log_dir: "logs/tensorboard"
+  checkpoint_save_freq: "epoch"

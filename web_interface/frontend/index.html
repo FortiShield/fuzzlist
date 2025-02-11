@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Preprocessing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .file-upload {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Preprocessing</h1>
+
+        <div class="file-upload">
+            <label for="csv-file">Upload CSV File:</label>
+            <input type="file" id="csv-file" accept=".csv" />
+            <button onclick="uploadFile('csv')">Upload CSV</button>
+        </div>
+
+        <div class="file-upload">
+            <label for="json-file">Upload JSON File:</label>
+            <input type="file" id="json-file" accept=".json" />
+            <button onclick="uploadFile('json')">Upload JSON</button>
+        </div>
+
+        <div id="result">
+            <p id="message"></p>
+            <a id="download-link" href="#" style="display: none;" target="_blank">Download Processed File</a>
+        </div>
+    </div>
+
+    <script>
+        async function uploadFile(type) {
+            let fileInput = document.getElementById(type + '-file');
+            let file = fileInput.files[0];
+
+            if (!file) {
+                alert("Please select a file first.");
+                return;
+            }
+
+            let formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                let response = await fetch(`http://localhost:8000/upload/${type}/`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to upload file');
+                }
+
+                let data = await response.json();
+                let processedFile = data.processed_file;
+
+                document.getElementById('message').innerText = "File uploaded and processed successfully!";
+                let downloadLink = document.getElementById('download-link');
+                downloadLink.href = `http://localhost:8000/download/${processedFile.split('/').pop()}`;
+                downloadLink.style.display = 'inline';
+            } catch (error) {
+                alert("Error: " + error.message);
+            }
+        }
+    </script>
+</body>
+</html>

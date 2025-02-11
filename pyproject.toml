@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "deepsec"
+version = "0.1.0"
+description = "A brief description of your project."
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+# Define the Python version here
+python = ">=3.8,<4.0"
+
+# Add your project's dependencies
+pandas = "^1.5.3"
+scikit-learn = "^1.1.1"
+# Add any other libraries your project depends on
+
+[tool.poetry.dev-dependencies]
+# Development dependencies
+pytest = "^7.2.0"
+black = "^22.3.0"
+
+[tool.poetry.scripts]
+# Define any CLI scripts your project provides
+# example-script = "your_module:main_function"
+
+[build-system]
+# Required for build tools
+requires = ["poetry>=1.0.0"]
+build-backend = "poetry.masonry.api"

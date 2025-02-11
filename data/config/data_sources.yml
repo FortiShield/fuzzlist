@@ -1,0 +1,171 @@
+sources:
+  - url: https://github.com/trickest/wordlists/blob/main/technologies/wordpress-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/cloud/levels/level1.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/cloud/levels/level2.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/cloud/levels/level3.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/cloud/levels/levels4plus.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/cloud/subdomains.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/inventory/levels/level1.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/inventory/levels/level2.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/inventory/levels/level3.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/inventory/levels/levels4plus.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/inventory/parameters.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/inventory/subdomains.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/robots/top-100.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/robots/top-1000.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/robots/top-10000.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/aimeos-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/aimeos.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/bagisto-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/bagisto.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/bolt-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/bolt.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/craftcms-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/craftcms.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/crater-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/crater.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/directus-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/directus.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/django-cms-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/django-cms.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/dolibarr-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/dolibarr.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/drupal-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/drupal.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/erpnext-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/erpnext.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/espocrm-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/espocrm.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/fatfreecrm-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/fatfreecrm.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/flarum-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/flarum.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/forkcms-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/forkcms.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/ghost-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/ghost.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/grav-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/grav.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/joomla-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/joomla.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/keystonejs-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/keystonejs.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/laravel-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/laravel.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/magento-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/magento.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/mautic-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/mautic.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/modx-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/modx.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/nopcommerce-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/nopcommerce.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/octobercms-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/octobercms.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/opencart-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/opencart.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/opensourcepos-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/opensourcepos.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/pagekit-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/pagekit.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/phpbb-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/phpbb.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/pico-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/pico.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/prestashop-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/prestashop.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/pyrocms-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/pyrocms.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/shopware-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/shopware.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/snipe-it-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/snipe-it.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/symphony-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/symphony.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/wordpress-all-levels.txt
+    destination: data/raw
+  - url: https://github.com/trickest/wordlists/technologies/wordpress.txt
+    destination: data/raw

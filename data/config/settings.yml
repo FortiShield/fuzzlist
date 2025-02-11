@@ -1,0 +1,27 @@
+# General settings
+project_name: "security"
+version: "1.0.0"
+
+# Data settings
+data:
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  sources_config: "config/data_sources.yml"
+
+# Training settings
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  epochs: 10
+  model_checkpoint_dir: "models/checkpoints"
+
+# Logging settings
+logging:
+  level: "INFO"
+  log_file: "logs/project.log"
+
+# Web interface settings
+web_interface:
+  host: "127.0.0.1"
+  port: 5000
+  debug: true
