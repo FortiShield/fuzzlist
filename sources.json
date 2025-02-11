@@ -1,0 +1,8 @@
+{
+    "passwords": [
+        "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/top-100.txt"
+    ],
+    "usernames": [
+        "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/top-usernames-shortlist.txt"
+    ]
+}
