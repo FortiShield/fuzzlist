@@ -1,0 +1,3 @@
+model_name: 'security-llm-v1'
+batch_size: 32
+learning_rate: 0.0001
