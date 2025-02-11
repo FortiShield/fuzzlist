@@ -1,33 +1,40 @@
-name: Auto Update Wordlists
+import os
+import json
+from github import Github
 
-on:
-  schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight UTC
-  workflow_dispatch:  # Allows manual triggering
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")  # Set this in your environment
 
-jobs:
-  update:
-    runs-on: ubuntu-latest
+def fetch_repo_files(repo_url):
+    repo_name = repo_url.replace("https://github.com/", "")
+    g = Github(GITHUB_TOKEN)
+    repo = g.get_repo(repo_name)
+    wordlist_files = []
+    
+    def fetch_files(path=""):
+        contents = repo.get_contents(path)
+        for content in contents:
+            if content.type == "dir":
+                fetch_files(content.path)  # Recursively fetch subdirectories
+            elif content.path.endswith(".txt"):
+                file_url = content.download_url
+                if "Payloads/Flash/xssproject.swf" not in file_url:  # Ignore bad merge file
+                    wordlist_files.append(file_url)
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    fetch_files()
+    return wordlist_files
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
+def generate_sources_json(repo_list, output_file="sources.json"):
+    sources = {}
+    for repo in repo_list:
+        sources[repo] = fetch_repo_files(repo)
+    
+    with open(output_file, "w") as f:
+        json.dump(sources, f, indent=4)
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run update script
-        run: python update_wordlists.py
-
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A  # Ensures sources.json is included
-          git commit -m "Auto-update wordlists" || echo "No changes to commit"
-          git push
+if __name__ == "__main__":
+    repo_list = [
+        "https://github.com/danielmiessler/SecLists",
+        "https://github.com/assetnote/wordlists"
+    ]
+    generate_sources_json(repo_list)
+    print("Generated sources.json")
