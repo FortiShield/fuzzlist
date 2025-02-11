@@ -33,7 +33,6 @@ def generate_sources_json(repo_list, output_file="sources.json"):
 
 if __name__ == "__main__":
     repo_list = [
-        "https://github.com/danielmiessler/SecLists",
         "https://github.com/assetnote/wordlists"
     ]
     generate_sources_json(repo_list)
