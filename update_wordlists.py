@@ -1,7 +1,6 @@
 import os
 import json
-import time
-from github import Github, RateLimitExceededException
+from github import Github
 
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")  # Set this in your environment
 
@@ -12,18 +11,14 @@ def fetch_repo_files(repo_url):
     wordlist_files = []
     
     def fetch_files(path=""):
-        try:
-            contents = repo.get_contents(path)
-            while contents:
-                content = contents.pop(0)
-                if content.type == "dir":
-                    contents.extend(repo.get_contents(content.path))  # Handle pagination properly
-                elif content.path.endswith(".txt"):
-                    wordlist_files.append(content.download_url)
-        except RateLimitExceededException:
-            print("Rate limit exceeded. Sleeping for 2 minutes...")
-            time.sleep(120)
-            fetch_files(path)  # Retry after cooldown
+        contents = repo.get_contents(path)
+        for content in contents:
+            if content.type == "dir":
+                fetch_files(content.path)  # Recursively fetch subdirectories
+            elif content.path.endswith(".txt"):
+                file_url = content.download_url
+                if "Payloads/Flash/xssproject.swf" not in file_url:  # Ignore bad merge file
+                    wordlist_files.append(file_url)
 
     fetch_files()
     return wordlist_files
