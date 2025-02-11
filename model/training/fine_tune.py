@@ -16,6 +16,10 @@ transform = transforms.Compose([
 train_dataset = datasets.FakeData(transform=transform)
 train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=32, shuffle=True)
 
+# Load validation dataset
+val_dataset = datasets.FakeData(transform=transform)
+val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=32, shuffle=False)
+
 # Load pre-trained model
 model = models.resnet18(pretrained=True)
 model.fc = nn.Linear(model.fc.in_features, 10)  # Adjust for number of classes
@@ -43,6 +47,25 @@ for epoch in range(num_epochs):
     
     print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {total_loss/len(train_loader):.4f}")
 
+    # Validation loop
+    model.eval()
+    val_loss = 0
+    correct = 0
+    total = 0
+    with torch.no_grad():
+        for images, labels in val_loader:
+            images, labels = images.to(device), labels.to(device)
+            outputs = model(images)
+            loss = criterion(outputs, labels)
+            val_loss += loss.item()
+            _, predicted = torch.max(outputs.data, 1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+    
+    print(f"Validation Loss: {val_loss/len(val_loader):.4f}, Accuracy: {100 * correct / total:.2f}%")
+
 # Save model
 torch.save(model.state_dict(), "fine_tuned_model.pth")
 print("Model saved successfully!")
+
+# TODO: Ensure all parameters passed to FastAPI class are correctly handled and documented.
