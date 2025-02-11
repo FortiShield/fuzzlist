@@ -1,5 +1,4 @@
 import os
-import requests
 import json
 from github import Github
 
@@ -11,10 +10,15 @@ def fetch_repo_files(repo_url):
     repo = g.get_repo(repo_name)
     wordlist_files = []
     
-    for file in repo.get_contents(""):
-        if file.path.endswith(".txt"):
-            wordlist_files.append(file.download_url)
-    
+    def fetch_files(path=""):
+        contents = repo.get_contents(path)
+        for content in contents:
+            if content.type == "dir":
+                fetch_files(content.path)  # Recursively fetch subdirectories
+            elif content.path.endswith(".txt"):
+                wordlist_files.append(content.download_url)
+
+    fetch_files()
     return wordlist_files
 
 def generate_sources_json(repo_list, output_file="sources.json"):
